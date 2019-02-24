@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/asottile/asottile/_apis/build/status/asottile.azure-pipeline-templates?branchName=master)](https://dev.azure.com/asottile/asottile/_build/latest?definitionId=7&branchName=master)
+
 azure-pipeline-templates
 ========================
 

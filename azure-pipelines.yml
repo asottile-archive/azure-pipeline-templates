@@ -1,0 +1,2 @@
+jobs:
+- template: job--pre-commit.yml
