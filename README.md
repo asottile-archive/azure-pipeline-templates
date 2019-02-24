@@ -36,7 +36,8 @@ The tox environments must either:
 - be equal to: `py27`, `py34`, `py35`, `py36`, `py37`, `py38`
 - start with: `py27-`, `py34-`, `py35-`, `py36-`, `py37-`, `py38-`
 
-for now, python3.8 is only available on linux
+for now, python3.8 is only available on linux -- it is installed from
+[deadsnakes]
 
 #### example
 
@@ -44,3 +45,5 @@ for now, python3.8 is only available on linux
 - template: job--python-tox.yml@asottile
   parameters: {tox: py37, os: windows}
 ```
+
+[deadsnakes]: https://github.com/deadsnakes
