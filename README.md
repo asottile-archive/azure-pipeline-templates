@@ -50,6 +50,8 @@ for now, python3.8 is only available on linux -- it is installed from
   parameters: {tox: py37, os: windows}
 ```
 
+- [example using this template: asottile/pyupgrade](https://github.com/asottile/pyupgrade/blob/a19ba9be/azure-pipelines.yml#L10-L11)
+
 ### `job--pre-commit.yml`
 
 _new in v0.0.2_
@@ -68,3 +70,5 @@ files.
 ```yaml
 - template: job--pre-commit.yml@asottile
 ```
+
+- [example using this template: pre-commit/pygrep-hooks](https://github.com/pre-commit/pygrep-hooks/blob/2968c93e/azure-pipelines.yml#L9-L10)
