@@ -1,0 +1,48 @@
+parameters:
+  tox: ''
+  os: linux
+
+jobs:
+- job: ${{ format('{0}_{1}', parameters.os, parameters.tox) }}
+  pool:
+    ${{ if eq(parameters.os, 'linux') }}:
+      vmImage: ubuntu-16.04
+    ${{ if eq(parameters.os, 'windows') }}:
+      vmImage: vs2017-win2016
+    ${{ if eq(parameters.os, 'osx') }}:
+      vmImage: macOS-10.13
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      ${{ if or(eq(parameters.tox, 'py27'), startsWith(parameters.tox, 'py27-')) }}:
+        versionSpec: '2.7'
+      ${{ if or(eq(parameters.tox, 'py34'), startsWith(parameters.tox, 'py34-')) }}:
+        versionSpec: '3.4'
+      ${{ if or(eq(parameters.tox, 'py35'), startsWith(parameters.tox, 'py35-')) }}:
+        versionSpec: '3.5'
+      ${{ if or(eq(parameters.tox, 'py36'), startsWith(parameters.tox, 'py36-')) }}:
+        versionSpec: '3.6'
+      ${{ if or(eq(parameters.tox, 'py37'), startsWith(parameters.tox, 'py37-')) }}:
+        versionSpec: '3.7'
+      # pypy is already installed, we just use this to run tox
+      ${{ if or(eq(parameters.tox, 'pypy'), startsWith(parameters.tox, 'pypy-')) }}:
+        versionSpec: '3.7'
+      ${{ if or(eq(parameters.tox, 'pypy3'), startsWith(parameters.tox, 'pypy3-')) }}:
+        versionSpec: '3.7'
+      # we'll run tox using this on py38
+      ${{ if or(eq(parameters.tox, 'py38'), startsWith(parameters.tox, 'py38-')) }}:
+        versionSpec: '3.7'
+      architecture: 'x64'
+
+  - ${{ if or(eq(parameters.tox, 'py38'), startsWith(parameters.tox, 'py38-')) }}:
+    - script: |
+        sudo add-apt-repository ppa:deadsnakes
+        sudo apt-get update
+        sudo apt-get install -y --no-install-recommends python3.8-dev python3.8-distutils
+      displayName: install 3.8
+
+  - script: python -m pip install --upgrade tox
+    displayName: install tox
+  - script: tox -e ${{ parameters.tox }}
+    displayName: run tox
