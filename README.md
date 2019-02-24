@@ -3,13 +3,19 @@ azure-pipeline-templates
 
 ## usage
 
-Add this to the beginning of an azure pipeline to use the templates
+**First find the name of your github service connection**
+
+You can find this in `Project Settings` => `Service connections` in the
+Azure Devops dashboard for your project.
+
+**Next add this to the beginning of your `azure-pipelines.yml`**
 
 ```yaml
 resources:
   repositories:
     - repository: asottile
       type: github
+      endpoint: <<<service connection name>>>
       name: asottile/azure-pipeline-templates
       ref: refs/tags/v0.0.1
 ```
