@@ -57,6 +57,8 @@ files.
 
 #### parameters
 
+- `ruby`: the version of ruby to install to the system (used by some hooks),
+  defaults to `'>= 2.4'`
 - `python`: the python version to run pre-commit with, defaults to `'3.7'`
 
 #### example
