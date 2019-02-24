@@ -25,6 +25,8 @@ namespace.
 
 ### `job--python-tox.yml`
 
+_new in v0.0.1_
+
 This job template will install python and invoke tox.
 
 #### parameters
@@ -37,7 +39,7 @@ The tox environments must either:
 - start with: `py27-`, `py34-`, `py35-`, `py36-`, `py37-`, `py38-`
 
 for now, python3.8 is only available on linux -- it is installed from
-[deadsnakes]
+[deadsnakes](https://github.com/deadsnakes)
 
 #### example
 
@@ -46,4 +48,19 @@ for now, python3.8 is only available on linux -- it is installed from
   parameters: {tox: py37, os: windows}
 ```
 
-[deadsnakes]: https://github.com/deadsnakes
+### `job--pre-commit.yml`
+
+_new in v0.0.2_
+
+This job template will invoke [pre-commit](https://pre-commit.com) against all
+files.
+
+#### parameters
+
+- `python`: the python version to run pre-commit with, defaults to `'3.7'`
+
+#### example
+
+```yaml
+- template: job--pre-commit.yml@asottile
+```
