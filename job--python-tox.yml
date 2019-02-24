@@ -1,6 +1,7 @@
 parameters:
   tox: ''
   os: linux
+  coverage: true
 
 jobs:
 - job: ${{ format('{0}_{1}', parameters.os, parameters.tox) }}
@@ -11,6 +12,12 @@ jobs:
       vmImage: vs2017-win2016
     ${{ if eq(parameters.os, 'osx') }}:
       vmImage: macOS-10.13
+
+  variables:
+    ${{ if eq(parameters.os, 'windows') }}:
+      bindir: Scripts
+    ${{ if ne(parameters.os, 'windows') }}:
+      bindir: bin
 
   steps:
   - task: UsePythonVersion@0
@@ -46,3 +53,11 @@ jobs:
     displayName: install tox
   - script: tox -e ${{ parameters.tox }}
     displayName: run tox
+
+  - ${{ if parameters.coverage }}:
+    - bash: .tox/${{ parameters.tox }}/$(bindir)/coverage xml -o coverage.xml
+      displayName: generate coverage xml
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: cobertura
+        summaryFileLocation: coverage.xml

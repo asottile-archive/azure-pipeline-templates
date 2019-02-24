@@ -35,6 +35,8 @@ This job template will install python and invoke tox.
 
 - `tox`: the `tox` environment name to run
 - `os`: choices (`linux`, `windows`, `osx`)
+- `coverage`: _new in v0.0.3_ after the run publish coverage to azure
+  pipelines, default `true`
 
 The tox environments must either:
 - be equal to: `py27`, `py34`, `py35`, `py36`, `py37`, `py38`
@@ -42,6 +44,9 @@ The tox environments must either:
 
 for now, python3.8 is only available on linux -- it is installed from
 [deadsnakes](https://github.com/deadsnakes)
+
+coverage information can be using a
+[shield.io badge](https://shields.io/category/coverage)
 
 #### example
 
