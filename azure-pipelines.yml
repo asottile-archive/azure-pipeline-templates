@@ -1,2 +1,6 @@
+trigger:
+  branches:
+    include: [master, test-me-*]
+
 jobs:
 - template: job--pre-commit.yml
