@@ -52,10 +52,12 @@ coverage information can be displayed using a
 
 ```yaml
 - template: job--python-tox.yml@asottile
-  parameters: {tox: py37, os: windows}
+  parameters:
+    toxenvs: [py27, py37]
+    os: windows
 ```
 
-- [example using this template: asottile/pyupgrade](https://github.com/asottile/pyupgrade/blob/a19ba9be/azure-pipelines.yml#L10-L11)
+- [example using this template: asottile/pyupgrade](https://github.com/asottile/pyupgrade/blob/8701d8b7/azure-pipelines.yml#L14-L21)
 
 ### `job--pre-commit.yml`
 
