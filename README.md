@@ -33,7 +33,7 @@ This job template will install python and invoke tox.
 
 #### parameters
 
-- `tox`: the `tox` environment name to run
+- `toxenvs`: the list of `tox` environment names to run
 - `os`: choices (`linux`, `windows`, `osx`)
 - `coverage`: _new in v0.0.3_ after the run publish coverage to azure
   pipelines, default `true`
