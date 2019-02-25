@@ -62,7 +62,7 @@ jobs:
     displayName: run tox
 
   - ${{ if parameters.coverage }}:
-    - bash: .tox/$(toxenv)/$(bindir)/coverage xml -o coverage.xml
+    - bash: .tox/$(TOXENV)/$(bindir)/coverage xml -o coverage.xml
       displayName: generate coverage xml
     - task: PublishCodeCoverageResults@1
       inputs:
