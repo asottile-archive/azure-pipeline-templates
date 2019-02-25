@@ -46,7 +46,7 @@ for now, python3.8 is only available on linux -- it is installed from
 [deadsnakes](https://github.com/deadsnakes)
 
 coverage information can be displayed using a
-[shield.io badge](https://shields.io/category/coverage)
+[shields.io badge](https://shields.io/category/coverage)
 
 #### example
 
