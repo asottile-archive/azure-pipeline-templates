@@ -2,9 +2,11 @@ parameters:
   toxenvs: []
   os: linux
   coverage: true
+  pre_test: []
+  name_postfix: ''
 
 jobs:
-- job: ${{ format('tox_{0}', parameters.os) }}
+- job: ${{ format('tox_{0}{1}', parameters.os, parameters.name_postfix) }}
   strategy:
     matrix:
       ${{ each env in parameters.toxenvs }}:
@@ -55,6 +57,8 @@ jobs:
       sudo apt-get install -y --no-install-recommends python3.8-dev python3.8-distutils
     condition: variables.ispy38
     displayName: install 3.8
+
+  - ${{ parameters.pre_test }}
 
   - script: python -m pip install --upgrade tox
     displayName: install tox
