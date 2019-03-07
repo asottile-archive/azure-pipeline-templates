@@ -67,7 +67,7 @@ jobs:
   - script: tox
     displayName: run tox
 
-  - ${{ if parameters.coverage }}:
+  - ${{ if eq(parameters.coverage, true) }}:
     - bash: .tox/$(TOXENV)/$(bindir)/coverage xml -o coverage.xml
       displayName: generate coverage xml
     - task: PublishCodeCoverageResults@1
