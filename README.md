@@ -5,10 +5,16 @@ azure-pipeline-templates
 
 ## usage
 
-**First find the name of your github service connection**
+**First configure a github service connection**
+
+It is suggested to use a generic name, such as `github` so forks can also
+configure the same.
 
 You can find this in `Project Settings` => `Service connections` in the
-Azure Devops dashboard for your project.
+Azure Devops dashboard for your project.  Project settings is located in the
+bottom left corner of the UI as of 2019-03-07.
+
+Below I'm using the endpoint name **`github`**
 
 **Next add this to the beginning of your `azure-pipelines.yml`**
 
@@ -17,7 +23,7 @@ resources:
   repositories:
     - repository: asottile
       type: github
-      endpoint: <<<service connection name>>>
+      endpoint: github
       name: asottile/azure-pipeline-templates
       ref: refs/tags/v0.0.7
 ```
