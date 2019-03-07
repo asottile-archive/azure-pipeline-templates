@@ -1,6 +1,7 @@
 parameters:
   toxenvs: []
   os: linux
+  architecture: x64
   coverage: true
   pre_test: []
   name_postfix: ''
@@ -50,6 +51,7 @@ jobs:
   - task: UsePythonVersion@0
     inputs:
       versionSpec: $(py)
+      architecture: ${{ parameters.architecture }}
 
   - script: |
       sudo add-apt-repository ppa:deadsnakes

@@ -1,0 +1,48 @@
+parameters:
+  go_versions: []
+  os: linux
+  tests: './...'
+  pre_test: []
+  name_postfix: ''
+
+jobs:
+- job: ${{ format('go_test_{0}{1}', parameters.os, parameters.name_postfix) }}
+  strategy:
+    matrix:
+      ${{ each go in parameters.go_versions }}:
+        ${{ go }}:
+          go: ${{ go }}
+
+  pool:
+    ${{ if eq(parameters.os, 'linux') }}:
+      vmImage: ubuntu-16.04
+    ${{ if eq(parameters.os, 'windows') }}:
+      vmImage: vs2017-win2016
+    ${{ if eq(parameters.os, 'osx') }}:
+      vmImage: macOS-10.13
+
+  variables:
+    GOPATH: '$(system.defaultWorkingDirectory)/gopath'
+    module_path: '$(GOPATH)/src/github.com/$(build.repository.name)'
+
+  steps:
+  - task: GoTool@0
+    inputs:
+      version: $(go)
+
+  - ${{ parameters.pre_test }}
+
+  - bash: |
+      mkdir -p '$(module_path)'
+      shopt -s dotglob extglob
+      mv !(gopath) '$(module_path)'
+      echo '##vso[task.prependpath]$(GOPATH)/bin'
+    displayName: 'set up GOPATH'
+
+  - script: go get -v -t -d ./...
+    workingDirectory: '$(module_path)'
+    displayName: 'go get dependencies'
+
+  - script: go test -v ${{ parameters.tests }}
+    workingDirectory: '$(module_path)'
+    displayName: 'run tests'
