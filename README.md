@@ -19,7 +19,7 @@ resources:
       type: github
       endpoint: <<<service connection name>>>
       name: asottile/azure-pipeline-templates
-      ref: refs/tags/v0.0.5
+      ref: refs/tags/v0.0.7
 ```
 
 this will make the templates in this repository available in the `asottile`
@@ -37,7 +37,7 @@ This job template will install python and invoke tox.
 - `os`: choices (`linux`, `windows`, `osx`)
 - `architecture`: _new in v0.0.6_ choices (`x64`, `x86`), default `x64`
   (only affects windows)
-- `coverage`: _new in v0.0.3_ after the run publish coverage to azure
+- `coverage`: _new in v0.0.7_ after the run publish coverage to azure
   pipelines, default `true`
 - `pre_test`: _new in v0.0.5_ `steps` to run before running `tox`, such as
   installing tools, etc.  default: `[]`
