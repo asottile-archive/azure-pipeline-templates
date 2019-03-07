@@ -35,6 +35,8 @@ This job template will install python and invoke tox.
 
 - `toxenvs`: the list of `tox` environment names to run
 - `os`: choices (`linux`, `windows`, `osx`)
+- `architecture`: _new in v0.0.6_ choices (`x64`, `x86`), default `x64`
+  (only affects windows)
 - `coverage`: _new in v0.0.3_ after the run publish coverage to azure
   pipelines, default `true`
 - `pre_test`: _new in v0.0.5_ `steps` to run before running `tox`, such as
@@ -83,3 +85,28 @@ files.
 ```
 
 - [example using this template: pre-commit/pygrep-hooks](https://github.com/pre-commit/pygrep-hooks/blob/2968c93e/azure-pipelines.yml#L9-L10)
+
+### `job--go-test.yml`
+
+_new in v0.0.6_
+
+This job checks out a go project, runs `go get` and then `go test`
+
+#### parameters
+
+- `go_versions`: list of go versions to test againsg
+- `os`: choices (`linux`, `windows`, `osx`)
+- `tests`: what to `go test ...`, default `./...`
+- `pre_test`: _new in v0.0.5_ `steps` to run before running `tox`, such as
+  installing tools, etc.  default: `[]`
+- `name_postfix`: _new in v0.0.5_ string to be appended to job name if you need
+  to make it unique, default: `''`
+
+#### example
+
+```yaml
+- template: job--go-test.yml@asottile
+  parameters:
+    go_versions: ['1.11.5', '1.12']
+    os: 'linux'
+```
