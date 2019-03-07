@@ -94,13 +94,13 @@ This job checks out a go project, runs `go get` and then `go test`
 
 #### parameters
 
-- `go_versions`: list of go versions to test againsg
+- `go_versions`: list of go versions to test against
 - `os`: choices (`linux`, `windows`, `osx`)
 - `tests`: what to `go test ...`, default `./...`
-- `pre_test`: _new in v0.0.5_ `steps` to run before running `tox`, such as
-  installing tools, etc.  default: `[]`
-- `name_postfix`: _new in v0.0.5_ string to be appended to job name if you need
-  to make it unique, default: `''`
+- `pre_test`: `steps` to run before running `tox`, such as installing tools,
+  etc.  default: `[]`
+- `name_postfix`: string to be appended to job name if you need to make it
+  unique, default: `''`
 
 #### example
 
@@ -110,3 +110,5 @@ This job checks out a go project, runs `go get` and then `go test`
     go_versions: ['1.11.5', '1.12']
     os: 'linux'
 ```
+
+- [example using this template: asottile/dockerfile](https://github.com/asottile/dockerfile/blob/2bd942dc/azure-pipelines.yml#L16-L21)
