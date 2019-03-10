@@ -33,6 +33,7 @@ jobs:
   - ${{ parameters.pre_test }}
 
   - bash: |
+      set -euxo pipefail
       mkdir -p '$(module_path)'
       shopt -s dotglob extglob
       mv !(gopath) '$(module_path)'
