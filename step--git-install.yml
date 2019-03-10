@@ -1,0 +1,17 @@
+parameters:
+  version: master
+
+steps:
+- bash: |
+    set -euxo pipefail
+    sudo apt-get install -y --no-install-recommends libcurl4-openssl-dev
+    git init /tmp/git
+    cd /tmp/git
+    git remote add origin https://github.com/git/git
+    git fetch --depth 1 origin ${{ parameters.version }}
+    git checkout FETCH_HEAD
+    make prefix=/tmp/git NO_GETTEXT=1 NO_TCLTK=1 -j4 install
+    echo '##vso[task.prependpath]/tmp/git/bin'
+  displayName: install git @ ${{ parameters.version }}
+- script: git --version
+  displayName: git --version

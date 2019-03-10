@@ -31,6 +31,8 @@ resources:
 this will make the templates in this repository available in the `asottile`
 namespace.
 
+## job templates
+
 ### `job--python-tox.yml`
 
 _new in v0.0.1_
@@ -118,3 +120,25 @@ This job checks out a go project, runs `go get` and then `go test`
 ```
 
 - [example using this template: asottile/dockerfile](https://github.com/asottile/dockerfile/blob/2bd942dc/azure-pipelines.yml#L16-L21)
+
+## step templates
+
+When referring to a step template as part of `pre_test`, omit the `@asottile`
+repository selector (as the template is included *after* job templating).
+
+### `step--git-install.yml`
+
+_new in v0.0.8_
+
+This step template will install `git` from source and put it on the `PATH`.
+This step is currently only supported on `linux`.
+
+#### parameters
+
+- `versions`: ref to install at, default `master`
+
+#### example
+
+```yaml
+  - template: step--install-git.yml
+```
