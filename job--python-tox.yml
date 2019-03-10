@@ -58,7 +58,7 @@ jobs:
       sudo apt-get update
       sudo apt-get install -y --no-install-recommends python3.8-dev python3.8-distutils
     condition: variables.ispy38
-    displayName: install 3.8
+    displayName: install python 3.8
 
   - ${{ parameters.pre_test }}
 
