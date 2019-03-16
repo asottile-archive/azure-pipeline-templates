@@ -74,3 +74,14 @@ jobs:
       inputs:
         codeCoverageTool: cobertura
         summaryFileLocation: coverage.xml
+      displayName: publish coverage artifact
+
+  - bash: .tox/$(TOXENV)/$(bindir)/pip wheel --no-deps . -w wheels
+    displayName: build wheel
+    condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
+  - task: PublishPipelineArtifact@0
+    condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
+    inputs:
+      targetPath: wheels
+      artifactName: wheel_${{ parameters.os }}_$(TOXENV)${{ parameters.name_postfix }}
+    displayName: publish wheel artifact
