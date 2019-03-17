@@ -25,7 +25,7 @@ resources:
       type: github
       endpoint: github
       name: asottile/azure-pipeline-templates
-      ref: refs/tags/v0.0.9
+      ref: refs/tags/v0.0.10
 ```
 
 this will make the templates in this repository available in the `asottile`
@@ -47,6 +47,9 @@ This job template will install python and invoke tox.
   (only affects windows)
 - `coverage`: _new in v0.0.7_ after the run publish coverage to azure
   pipelines, default `true`
+- `wheel_tags`: _new in v0.0.10_ after a run of a tag, build a wheel and
+  publish it as an artifact, default `false`.  the artifacts can be downloaded
+  using the `bin/download-wheels` script included in this repository.
 - `pre_test`: _new in v0.0.5_ `steps` to run before running `tox`, such as
   installing tools, etc.  default: `[]`
 - `name_postfix`: _new in v0.0.5_ string to be appended to job name if you need
