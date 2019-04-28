@@ -24,11 +24,10 @@ jobs:
             py: '3.6'
           ${{ if or(eq(env, 'py37'), startsWith(env, 'py37-')) }}:
             py: '3.7'
-          # pypy is already installed, we just use this to run tox
           ${{ if or(eq(env, 'pypy'), startsWith(env, 'pypy-')) }}:
-            py: '3.7'
+            py: 'pypy2'
           ${{ if or(eq(env, 'pypy3'), startsWith(env, 'pypy3-')) }}:
-            py: '3.7'
+            py: 'pypy3'
           # we'll run tox using this on py38
           ${{ if or(eq(env, 'py38'), startsWith(env, 'py38-')) }}:
             py: '3.7'
