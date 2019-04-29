@@ -1,7 +1,15 @@
 steps:
-- bash: |
+- script: |
     curl -sSf https://sh.rustup.rs | bash -s -- -y
     echo "##vso[task.prependpath]$HOME/.cargo/bin"
   displayName: install rust
-- bash: rustc --version
+  condition: ne(variables['Agent.OS'], 'Windows_NT')
+- script: |
+    curl -sSf https://sh.rustup.rs | bash -s -- -y
+    echo ##vso[task.prependpath]%USERPROFILE%\.cargo\bin
+  displayName: install rust (windows)
+  condition: eq(variables['Agent.OS'], 'Windows_NT')
+- script: rustc --version
   displayName: rustc --version
+- script: cargo --version
+  displayName: cargo --version
