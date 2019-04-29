@@ -50,6 +50,7 @@ This job template will install python and invoke tox.
 - `wheel_tags`: _new in v0.0.10_ after a run of a tag, build a wheel and
   publish it as an artifact, default `false`.  the artifacts can be downloaded
   using the `bin/download-wheels` script included in this repository.
+- `additional_variables`: _new in v0.0.13_ additional pipeline `variables`
 - `pre_test`: _new in v0.0.5_ `steps` to run before running `tox`, such as
   installing tools, etc.  default: `[]`
 - `name_postfix`: _new in v0.0.5_ string to be appended to job name if you need

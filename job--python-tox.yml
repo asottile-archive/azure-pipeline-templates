@@ -4,6 +4,7 @@ parameters:
   architecture: x64
   coverage: true
   wheel_tags: false
+  additional_variables: {}
   pre_test: []
   name_postfix: ''
 
@@ -46,6 +47,7 @@ jobs:
       bindir: Scripts
     ${{ if ne(parameters.os, 'windows') }}:
       bindir: bin
+    ${{ insert }}: ${{ parameters.additional_variables }}
 
   steps:
   - task: UsePythonVersion@0
