@@ -1,0 +1,7 @@
+steps:
+- bash: |
+    curl -sSf https://sh.rustup.rs | bash -s -- -y
+    echo "##vso[task.prependpath]$HOME/.cargo/bin"
+  displayName: install rust
+- bash: rustc --version
+  displayName: rustc --version
