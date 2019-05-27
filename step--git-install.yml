@@ -4,6 +4,7 @@ parameters:
 steps:
 - bash: |
     set -euxo pipefail
+    sudo apt-get update -q
     sudo apt-get install -y --no-install-recommends libcurl4-openssl-dev
     git init /tmp/git
     cd /tmp/git
