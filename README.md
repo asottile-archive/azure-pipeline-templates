@@ -146,20 +146,3 @@ This step is currently only supported on `linux`.
 ```yaml
   - template: step--install-git.yml
 ```
-
-### `step--rust-install.yml`
-
-_new in v0.0.12_
-
-This step template will install `rust` from `rustup.rs` and put it on the
-`PATH`.
-
-#### parameters
-
-(none yet!)
-
-### example
-
-```yaml
-  - template: step--install-rust.yml
-```
