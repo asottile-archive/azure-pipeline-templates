@@ -107,7 +107,7 @@ This job checks out a go project, runs `go get` and then `go test`
 #### parameters
 
 - `go_versions`: list of go versions to test against
-- `os`: choices (`linux`, `windows`, `osx`)
+- `os`: choices (`linux`, `windows`, `macos`)
 - `tests`: what to `go test ...`, default `./...`
 - `pre_test`: `steps` to run before running `tox`, such as installing tools,
   etc.  default: `[]`
