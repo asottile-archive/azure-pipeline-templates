@@ -42,7 +42,7 @@ jobs:
       vmImage: ubuntu-16.04
     ${{ if eq(parameters.os, 'windows') }}:
       vmImage: vs2017-win2016
-    ${{ if eq(parameters.os, 'osx') }}:
+    ${{ if eq(parameters.os, 'macos') }}:
       vmImage: macOS-10.13
 
   variables:
