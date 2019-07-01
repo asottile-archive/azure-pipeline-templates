@@ -15,6 +15,9 @@ jobs:
       ${{ each env in parameters.toxenvs }}:
         ${{ env }}:
           TOXENV: ${{ env }}
+          ${{ if or(eq(env, 'py26'), startsWith(env, 'py26-')) }}:
+            py: '3.7'
+            ispy26: true
           ${{ if or(eq(env, 'py27'), startsWith(env, 'py27-')) }}:
             py: '2.7'
           ${{ if or(eq(env, 'py34'), startsWith(env, 'py34-')) }}:
@@ -61,6 +64,13 @@ jobs:
       sudo apt-get install -y --no-install-recommends python3.8-dev python3.8-distutils
     condition: variables.ispy38
     displayName: install python 3.8
+
+  - script: |
+      sudo add-apt-repository ppa:deadsnakes
+      sudo apt-get update
+      sudo apt-get install -y --no-install-recommends python2.6-dev
+    condition: variables.ispy26
+    displayName: install python 2.6
 
   - ${{ parameters.pre_test }}
 
