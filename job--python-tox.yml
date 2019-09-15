@@ -59,7 +59,7 @@ jobs:
       architecture: ${{ parameters.architecture }}
 
   - script: |
-      sudo add-apt-repository ppa:deadsnakes
+      sudo add-apt-repository ppa:deadsnakes/nightly
       sudo apt-get update
       sudo apt-get install -y --no-install-recommends python3.8-dev python3.8-distutils
     condition: variables.ispy38
