@@ -6,6 +6,8 @@ jobs:
 - job: precommit
   pool:
     vmImage: ubuntu-18.04
+  variables:
+    PRE_COMMIT_HOME: $(Pipeline.Workspace)/pre-commit-cache
 
   steps:
   - task: UsePythonVersion@0
@@ -14,6 +16,16 @@ jobs:
   - task: UseRubyVersion@0
     inputs:
       versionSpec: ${{ parameters.ruby }}
+
+  - script: |
+      echo "##vso[task.setvariable variable=PY]$(python -VV)"
+      echo "##vso[task.setvariable variable=RB]$(ruby -v)"
+    displayName: set version variables
+
+  - task: CacheBeta@0
+    inputs:
+      key: pre-commit | "4" | .pre-commit-config.yaml | "$(PY)" | "$(RB)"
+      path: $(PRE_COMMIT_HOME)
 
   - script: python -m pip install --upgrade pre-commit
     displayName: install pre-commit
