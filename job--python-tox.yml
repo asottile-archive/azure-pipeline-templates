@@ -41,11 +41,11 @@ jobs:
 
   pool:
     ${{ if eq(parameters.os, 'linux') }}:
-      vmImage: ubuntu-16.04
+      vmImage: ubuntu-18.04
     ${{ if eq(parameters.os, 'windows') }}:
-      vmImage: vs2017-win2016
+      vmImage: windows-2019
     ${{ if eq(parameters.os, 'macos') }}:
-      vmImage: macOS-10.13
+      vmImage: macOS-10.14
 
   variables:
     ${{ if eq(parameters.os, 'windows') }}:
