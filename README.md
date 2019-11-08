@@ -25,7 +25,7 @@ resources:
       type: github
       endpoint: github
       name: asottile/azure-pipeline-templates
-      ref: refs/tags/v0.0.17
+      ref: refs/tags/v0.0.18
 ```
 
 this will make the templates in this repository available in the `asottile`
