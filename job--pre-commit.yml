@@ -29,5 +29,5 @@ jobs:
 
   - script: python -m pip install --upgrade pre-commit
     displayName: install pre-commit
-  - script: pre-commit run --all-files --show-diff-on-failure
+  - script: pre-commit run --all-files --show-diff-on-failure --color=always
     displayName: run pre-commit
