@@ -8,7 +8,7 @@ import urllib.request
 import zipfile
 
 DEFINITION_RE = re.compile(
-    r'https://(?P<org>[^.]+)\.visualstudio\.com/(?P<project>[^/]+)'
+    r'https://dev.azure.com/(?P<org>[^/]+)/(?P<project>[^/]+)'
     r'/_build/latest\?definitionId=(?P<definition>\d+)',
 )
 BUILDS = 'https://dev.azure.com/{org}/{project}/_apis/build/builds?api-version=5.0&definitions={definition}&$top=5'  # noqa: E501
