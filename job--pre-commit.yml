@@ -1,6 +1,6 @@
 parameters:
   ruby: '>= 2.4'
-  python: '3.8'
+  python: '3.9'
 
 jobs:
 - job: precommit

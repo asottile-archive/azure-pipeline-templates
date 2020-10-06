@@ -19,8 +19,6 @@ jobs:
             arch: ${{ arch }}
             ${{ if or(eq(env, 'py27'), startsWith(env, 'py27-')) }}:
               py: '2.7'
-            ${{ if or(eq(env, 'py34'), startsWith(env, 'py34-')) }}:
-              py: '3.4'
             ${{ if or(eq(env, 'py35'), startsWith(env, 'py35-')) }}:
               py: '3.5'
             ${{ if or(eq(env, 'py36'), startsWith(env, 'py36-')) }}:
@@ -29,17 +27,19 @@ jobs:
               py: '3.7'
             ${{ if or(eq(env, 'py38'), startsWith(env, 'py38-')) }}:
               py: '3.8'
+            ${{ if or(eq(env, 'py39'), startsWith(env, 'py39-')) }}:
+              py: '3.9'
             ${{ if or(eq(env, 'pypy'), startsWith(env, 'pypy-')) }}:
               py: 'pypy2'
             ${{ if or(eq(env, 'pypy3'), startsWith(env, 'pypy3-')) }}:
               py: 'pypy3'
-            # we'll run tox using this on py39
-            ${{ if or(eq(env, 'py39'), startsWith(env, 'py39-')) }}:
-              py: '3.8'
-              ispy39: true
-            # Use Python 3.8 by default for toxenvs that don't start with 'py'
+            # we'll run tox using this on py310
+            ${{ if or(eq(env, 'py310'), startsWith(env, 'py310-')) }}:
+              py: '3.9'
+              ispy310: true
+            # Use Python 3.9 by default for toxenvs that don't start with 'py'
             ${{ if not(startsWith(env, 'py')) }}:
-              py: '3.8'
+              py: '3.9'
 
   pool:
     ${{ if eq(parameters.os, 'linux') }}:
@@ -65,9 +65,9 @@ jobs:
   - script: |
       sudo add-apt-repository ppa:deadsnakes/nightly
       sudo apt-get update
-      sudo apt-get install -y --no-install-recommends python3.9-dev python3.9-distutils
-    condition: variables.ispy39
-    displayName: install python 3.9
+      sudo apt-get install -y --no-install-recommends python3.10-dev python3.10-distutils
+    condition: variables.ispy310
+    displayName: install python 3.10
 
   - ${{ parameters.pre_test }}
 
