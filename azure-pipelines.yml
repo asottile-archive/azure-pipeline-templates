@@ -5,7 +5,6 @@ trigger:
     include: ['*']
 
 jobs:
-- template: job--pre-commit.yml
 - template: job--python-tox.yml
   parameters:
     coverage: false
