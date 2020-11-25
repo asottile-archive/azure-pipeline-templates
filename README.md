@@ -45,7 +45,7 @@ This job template will install python and invoke tox.
 - `toxenvs`: the list of `tox` environment names to run
 - `os`: choices (`linux`, `windows`, `osx`)
 - `architectures`: _new in v2.0.0_ list with choices (`x64`, `x86`),
-  default [`x64`] (only affects windows)
+  default `[x64]` (only affects windows)
 - `coverage`: _new in v0.0.7_ after the run publish coverage to azure
   pipelines, default `true`
 - `wheel_tags`: _new in v0.0.10_ after a run of a tag, build a wheel and
