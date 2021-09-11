@@ -32,7 +32,7 @@ jobs:
             ${{ if or(eq(env, 'pypy'), startsWith(env, 'pypy-')) }}:
               py: 'pypy2'
             ${{ if or(eq(env, 'pypy3'), startsWith(env, 'pypy3-')) }}:
-              py: 'pypy3'
+              py: 'pypy-3.7'
             # we'll run tox using this on py310
             ${{ if or(eq(env, 'py310'), startsWith(env, 'py310-')) }}:
               py: '3.9'
