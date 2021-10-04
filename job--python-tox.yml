@@ -29,17 +29,19 @@ jobs:
               py: '3.8'
             ${{ if or(eq(env, 'py39'), startsWith(env, 'py39-')) }}:
               py: '3.9'
+            ${{ if or(eq(env, 'py310'), startsWith(env, 'py310-')) }}:
+              py: '3.10'
             ${{ if or(eq(env, 'pypy'), startsWith(env, 'pypy-')) }}:
               py: 'pypy2'
             ${{ if or(eq(env, 'pypy3'), startsWith(env, 'pypy3-')) }}:
               py: 'pypy3'
-            # we'll run tox using this on py310
-            ${{ if or(eq(env, 'py310'), startsWith(env, 'py310-')) }}:
-              py: '3.9'
-              ispy310: true
-            # Use Python 3.9 by default for toxenvs that don't start with 'py'
+            # we'll run tox using this on py311
+            ${{ if or(eq(env, 'py311'), startsWith(env, 'py311-')) }}:
+              py: '3.10'
+              ispynext: true
+            # default python for toxenvs which don't start with `py`
             ${{ if not(startsWith(env, 'py')) }}:
-              py: '3.9'
+              py: '3.10'
 
   pool:
     ${{ if eq(parameters.os, 'linux') }}:
@@ -65,9 +67,9 @@ jobs:
   - script: |
       sudo add-apt-repository ppa:deadsnakes/nightly
       sudo apt-get update
-      sudo apt-get install -y --no-install-recommends python3.10-dev python3.10-distutils
-    condition: variables.ispy310
-    displayName: install python 3.10
+      sudo apt-get install -y --no-install-recommends python3.11-dev python3.11-distutils
+    condition: variables.ispynext
+    displayName: install python 3.11
 
   - ${{ parameters.pre_test }}
 
