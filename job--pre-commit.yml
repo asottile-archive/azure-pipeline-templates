@@ -5,7 +5,7 @@ parameters:
 jobs:
 - job: precommit
   pool:
-    vmImage: ubuntu-18.04
+    vmImage: ubuntu-latest
   variables:
     PRE_COMMIT_HOME: $(Pipeline.Workspace)/pre-commit-cache
 
