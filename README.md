@@ -58,8 +58,8 @@ This job template will install python and invoke tox.
   to make it unique, default: `''`
 
 The tox environments must either:
-- be equal to: `py27`, `py35`, `py36`, `py37`, `py38`, `py39`, `py310`, `py311`
-- start with: `py27-`, `py35-`, `py36-`, `py37-`, `py38-`, `py39-`, `py310-`, `py311-`
+- be equal to: `py27`, `py36`, `py37`, `py38`, `py39`, `py310`, `py311`
+- start with: `py27-`, `py36-`, `py37-`, `py38-`, `py39-`, `py310-`, `py311-`
 
 for now, python3.11 is only available on linux -- it is installed from
 [deadsnakes](https://github.com/deadsnakes)
