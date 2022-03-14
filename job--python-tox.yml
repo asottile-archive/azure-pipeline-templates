@@ -19,8 +19,6 @@ jobs:
             arch: ${{ arch }}
             ${{ if or(eq(env, 'py27'), startsWith(env, 'py27-')) }}:
               py: '2.7'
-            ${{ if or(eq(env, 'py35'), startsWith(env, 'py35-')) }}:
-              py: '3.5'
             ${{ if or(eq(env, 'py36'), startsWith(env, 'py36-')) }}:
               py: '3.6'
             ${{ if or(eq(env, 'py37'), startsWith(env, 'py37-')) }}:
