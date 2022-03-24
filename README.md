@@ -140,7 +140,7 @@ This step is currently only supported on `linux`.
 
 #### parameters
 
-- `versions`: ref to install at, default `master`
+- `versions`: ref to install at, default `HEAD`
 
 #### example
 
