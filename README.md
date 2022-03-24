@@ -1,5 +1,5 @@
-[![Build Status](https://dev.azure.com/asottile/asottile/_apis/build/status/asottile.azure-pipeline-templates?branchName=master)](https://dev.azure.com/asottile/asottile/_build/latest?definitionId=7&branchName=master)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/asottile/azure-pipeline-templates/master.svg)](https://results.pre-commit.ci/latest/github/asottile/azure-pipeline-templates/master)
+[![Build Status](https://dev.azure.com/asottile/asottile/_apis/build/status/asottile.azure-pipeline-templates?branchName=main)](https://dev.azure.com/asottile/asottile/_build/latest?definitionId=7&branchName=main)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/asottile/azure-pipeline-templates/main.svg)](https://results.pre-commit.ci/latest/github/asottile/azure-pipeline-templates/main)
 
 azure-pipeline-templates
 ========================
