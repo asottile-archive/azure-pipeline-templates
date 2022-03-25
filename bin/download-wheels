@@ -31,11 +31,10 @@ def main() -> int:
     builds_json = json.load(builds_resp)
 
     build_id = next(
-        iter([
-            build['id'] for build in builds_json['value']
-            if build['status'] == 'completed' and build['result'] == 'succeeded'
-            if build['sourceBranch'] == f'refs/tags/{args.tag}'
-        ]),
+        build['id'] for build in builds_json['value']
+        if build['status'] == 'completed'
+        if build['result'] == 'succeeded'
+        if build['sourceBranch'] == f'refs/tags/{args.tag}'
     )
 
     artifacts_url = ARTIFACTS.format(build=build_id, **match.groupdict())
