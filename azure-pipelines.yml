@@ -10,3 +10,5 @@ jobs:
     coverage: false
     toxenvs: [py27, py36, py37, py38, py39, py310, py311, pypy, pypy3, docs]
 - template: job--pre-commit.yml
+  parameters:
+    python: '3.10'
