@@ -1,6 +1,10 @@
 parameters:
-  ruby: '>= 2.4'
-  python: '3.9'
+  - name: ruby
+    type: string
+    default: '>= 2.4'
+  - name: python
+    type: string
+    default: '3.9'
 
 jobs:
 - job: precommit
@@ -12,10 +16,10 @@ jobs:
   steps:
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: ${{ parameters.python }}
+      versionSpec: ${{parameters.python}}
   - task: UseRubyVersion@0
     inputs:
-      versionSpec: ${{ parameters.ruby }}
+      versionSpec: ${{parameters.ruby}}
 
   - script: |
       echo "##vso[task.setvariable variable=PY]$(python -VV)"
