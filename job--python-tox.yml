@@ -71,7 +71,7 @@ jobs:
 
   - ${{ parameters.pre_test }}
 
-  - script: python -m pip install --upgrade tox setuptools virtualenv wheel
+  - script: python -m pip install --upgrade tox setuptools virtualenv
     displayName: install tox
   - script: tox
     displayName: run tox
