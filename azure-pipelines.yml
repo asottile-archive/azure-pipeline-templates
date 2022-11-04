@@ -8,4 +8,4 @@ jobs:
 - template: job--python-tox.yml
   parameters:
     coverage: false
-    toxenvs: [py27, py36, py37, py38, py39, py310, py311, pypy, pypy3, docs]
+    toxenvs: [py37, py38, py39, py310, py311, py312, pypy3, docs]
