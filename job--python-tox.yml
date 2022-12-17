@@ -87,7 +87,7 @@ jobs:
       condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
     - ${{ if eq(parameters.os, 'macos') }}:
       - bash: |
-          .tox/$(TOXENV)/$(bindir)/pip install delocate==0.10.0
+          .tox/$(TOXENV)/$(bindir)/pip install 'delocate>=0.10.3'
           .tox/$(TOXENV)/$(bindir)/delocate-wheel wheels/*.whl
         condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
         displayName: delocate
